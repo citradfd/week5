@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-class DynamicListView extends StatelessWidget {
-  DynamicListView({Key? key}) : super(key: key);
+class BuilderListView extends StatelessWidget {
+  BuilderListView({Key? key}) : super(key: key);
 
-  final List<int> numberList = [1, 2, 3, 4];
+  final growableList = List<int>.generate(100, (index) => ++index);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: numberList.map((number) {
+      body: ListView.builder(
+        itemCount: growableList.length,
+        itemBuilder: (context, index) {
+          final data = growableList[index];
           return Container(
             height: 250,
             decoration: BoxDecoration(
@@ -18,12 +20,12 @@ class DynamicListView extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                '$number', // Ditampilkan sesuai item
+                '$data',
                 style: const TextStyle(fontSize: 50),
               ),
             ),
           );
-        }).toList(),
+        },
       ),
     );
   }
