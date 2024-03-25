@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
       // Defining routes
       routes: {
         '/': (context) => const HomeScreen(), 
-        '/listViewTest': (context) => const ListViewTest(),
+        '/dynamicListView': (context) => DynamicListView(),
       },
     );
   }
@@ -29,9 +29,9 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/listViewTest');
+            Navigator.pushNamed(context, '/dynamicListView');
           },
-          child: const Text('Go to ListViewTest'),
+          child: const Text('Go to DynamicListView'),
         ),
       ),
     );
